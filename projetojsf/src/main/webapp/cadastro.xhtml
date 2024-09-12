@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
@@ -11,17 +12,27 @@
      <h:form>
           <p:messages id="messages" autoUpdate="true" />
           <p:panelGrid columns="2">
-                <p:outputLabel for="id" value="ID:" />
-                <p:spinner id="id" value="#{UsuarioMB.usuario.id}" />
 
                 <p:outputLabel for="nome" value="Nome:" />
-                <p:inputText id="nome" value="#{UsuarioMB.usuario.nome}" />
+                <p:inputText id="nome" value="#{UsuarioMB.usuario.nome}" required="true" label="Nome" />
 
                 <p:outputLabel for="senha" value="Senha:" />
-                <p:inputText id="senha" value="#{UsuarioMB.usuario.senha}" />
+                <p:password id="senha" value="#{UsuarioMB.usuario.senha}" required="true" label="Senha" />
+                
+				<p:outputLabel for="genero" value="Gênero:" />
+                <p:selectOneRadio id="genero" value="#{UsuarioMB.usuario.genero}" required="true" label="Gênero">
+                    <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                    <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+                    <f:selectItem itemLabel="Outro" itemValue="Outro" />
+                </p:selectOneRadio>
+                
+                <p:outputLabel for="data_nascimento" value="Data de Nascimento:" />
+                <p:calendar id="data_nascimento" value="#{UsuarioMB.usuario.dataNascimento}" 
+                        pattern="dd/MM/yyyy" showButtonPanel="true" navigator="true" yearRange="1900:2024" 
+                        required="true" label="Data de Nascimento" />
 
                 <p:outputLabel for="descricao" value="Descrição:" />
-                <p:inputTextarea id="descricao" value="#{UsuarioMB.usuario.descricao}" />
+                <p:inputTextarea id="descricao" value="#{UsuarioMB.usuario.descricao}" label="Descrição" />
 
                 <p:commandButton value="Cadastrar" icon="ui-icon-star"
                     action="#{UsuarioMB.cadastraUsuario}" update="messages" />
@@ -29,3 +40,4 @@
      </h:form>
 </h:body>
 </html>
+

@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:h="http://java.sun.com/jsf/html"
-   xmlns:f="http://java.sun.com/jsf/core"
-   xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+    <title>Listagem de Usuários</title>
 </h:head>
 
 <h:body>
-   <h:form>
-        <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}">
-              <p:column headerText="Id">
-                   <h:outputText value="#{usuario.id}" />
-              </p:column>
+    <h:form>
+        <p:dataTable var="usuario" value="#{UsuarioMB.usuarios}" paginator="true" rows="10">
+            <p:column headerText="Id">
+                <h:outputText value="#{usuario.id}" />
+            </p:column>
 
-              <p:column headerText="Nome">
-                   <h:outputText value="#{usuario.nome}" />
-              </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{usuario.nome}" />
+            </p:column>
 
-              <p:column headerText="Senha">
-                   <h:outputText value="#{usuario.senha}" />
-              </p:column>
+            <p:column headerText="Senha">
+                <h:outputText value="#{usuario.senha}" />
+            </p:column>
 
-              <p:column headerText="Descrição">
-                   <h:outputText value="#{usuario.descricao}" />
-              </p:column>
+            <p:column headerText="Gênero">
+                <h:outputText value="#{usuario.genero}" />
+            </p:column>
 
-              <p:column headerText="Data de Cadastro">
-                   <h:outputText value="#{usuario.dataCadastro}" />
-              </p:column>
+            <p:column headerText="Data de Nascimento">
+                <h:outputText value="#{usuario.dataNascimento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="Descrição">
+                <h:outputText value="#{usuario.descricao}" />
+            </p:column>
+
+            <p:column headerText="Data de Cadastro">
+                <h:outputText value="#{usuario.dataCadastro}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+            </p:column>
         </p:dataTable>
-
-
-   </h:form>
+    </h:form>
 </h:body>
 </html>
